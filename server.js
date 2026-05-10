@@ -110,7 +110,7 @@ const app = express();
 // ✅ CORS - Allow frontend URL (YAHAN FRONTEND URL DALO)
 const allowedOrigins = [
     'http://localhost:5000',
-    'https://your-frontend-url.netlify.app'  // ← Netlify ka URL dalna
+    'https://digital-memory-vault-frontend.vercel.appp',
 ];
 
 app.use(cors({
