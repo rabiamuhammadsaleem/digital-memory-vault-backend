@@ -301,9 +301,16 @@ const { startUnlockService } = require('./src/services/unlockService');
 const app = express();
 
 // Middleware
-app.use(cors());
+
+// CORS - Allow frontend URL
+app.use(cors({
+    origin: ['http://localhost:5000', 'https://digital-memory-vault-frontend.vercel.app/'],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -312,7 +319,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
       console.log('✅ MongoDB Connected Successfully');
-      startUnlockService();
+    //   startUnlockService();
   })
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
