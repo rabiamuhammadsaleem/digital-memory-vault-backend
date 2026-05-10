@@ -93,6 +93,198 @@
 // module.exports = app;
 
 
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const path = require('path');
+
+// dotenv.config();
+
+// const authRoutes = require('./src/routes/authRoutes');
+// const capsuleRoutes = require('./src/routes/capsuleRoutes');
+// const { startUnlockService } = require('./src/services/unlockService');
+
+// const app = express();
+
+
+// const allowedOrigins = [
+//     'http://localhost:5000',
+//     'https://digital-memory-vault-frontend.vercel.appp',
+// ];
+
+// app.use(cors({
+//     origin: allowedOrigins,
+//     credentials: true
+// }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// // ⚠️ Remove this line (frontend serve karna band karo)
+// // app.use(express.static(path.join(__dirname, 'frontend')));
+
+// // Serve uploaded files
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // Database connection
+// mongoose.connect(process.env.MONGODB_URI)
+//   .then(() => {
+//       console.log('✅ MongoDB Connected Successfully');
+//       startUnlockService();
+//   })
+//   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
+
+// // API Test route
+// app.get('/api/test', (req, res) => {
+//   res.json({ message: 'Digital Memory Vault API is running!' });
+// });
+
+// console.log('authRoutes:', authRoutes);
+// console.log('capsuleRoutes:', capsuleRoutes);
+// console.log('typeof authRoutes:', typeof authRoutes);
+// console.log('typeof capsuleRoutes:', typeof capsuleRoutes);
+// // API Routes
+// app.use('/api/auth', authRoutes);
+// app.use('/api/capsules', capsuleRoutes);
+
+// // ⚠️ Remove this line (frontend routes hatao)
+// // app.get(/^\/(?!api).*/, (req, res) => {
+// //     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+// // });
+
+// const PORT = process.env.PORT || 5000;
+
+// if (process.env.NODE_ENV !== 'production') {
+//     app.listen(PORT, () => {
+//         console.log(`🚀 Server running on port ${PORT}`);
+//     });
+// }
+
+// module.exports = app;
+
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const path = require('path');
+
+// dotenv.config();
+
+// // ========== IMPORTS ==========
+// const authRoutes = require('./src/routes/authRoutes');
+// const capsuleRoutes = require('./src/routes/capsuleRoutes');
+// const { startUnlockService } = require('./src/services/unlockService');
+
+// const app = express();
+
+// // ========== DEBUGGING - CHECK IMPORTS ==========
+// console.log('=====================================');
+// console.log('📦 Checking route imports:');
+// console.log('authRoutes:', authRoutes);
+// console.log('capsuleRoutes:', capsuleRoutes);
+// console.log('typeof authRoutes:', typeof authRoutes);
+// console.log('typeof capsuleRoutes:', typeof capsuleRoutes);
+
+// if (!authRoutes || !capsuleRoutes) {
+//     console.error('❌ ERROR: Routes are undefined!');
+//     console.error('Check if files exist in src/routes/ folder');
+//     process.exit(1);
+// }
+// console.log('✅ Routes imported successfully!');
+// console.log('=====================================');
+
+// // ========== CORS ==========
+// const allowedOrigins = [
+//     'http://localhost:5000',
+//     'https://digital-memory-vault-frontend.vercel.app',
+// ];
+
+// app.use(cors({
+//     origin: allowedOrigins,
+//     credentials: true
+// }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// // Serve uploaded files
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // ========== DATABASE ==========
+// mongoose.connect(process.env.MONGODB_URI)
+//   .then(() => {
+//       console.log('✅ MongoDB Connected Successfully');
+//       startUnlockService();
+//   })
+//   .catch((err) => console.error('❌ MongoDB Error:', err.message));
+
+// // ========== TEST ROUTE ==========
+// app.get('/api/test', (req, res) => {
+//   res.json({ message: 'Digital Memory Vault API is running!' });
+// });
+
+// // ========== API ROUTES ==========
+// console.log('📡 Registering routes...');
+// app.use('/api/auth', authRoutes);
+// app.use('/api/capsules', capsuleRoutes);
+// console.log('✅ Routes registered successfully!');
+
+// // ========== SERVER ==========
+// const PORT = process.env.PORT || 5000;
+
+// if (process.env.NODE_ENV !== 'production') {
+//     app.listen(PORT, () => {
+//         console.log(`🚀 Server running on port ${PORT}`);
+//         console.log(`🔗 API test: http://localhost:${PORT}/api/test`);
+//     });
+// }
+
+// module.exports = app;
+
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const path = require('path');
+
+// dotenv.config();
+
+// // Import routes
+// const authRoutes = require('./src/routes/authRoutes');
+// const capsuleRoutes = require('./src/routes/capsuleRoutes');
+// const { startUnlockService } = require('./src/services/unlockService');
+
+// const app = express();
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// // Serve uploaded files
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // Database connection
+// mongoose.connect(process.env.MONGODB_URI)
+//   .then(() => {
+//       console.log('✅ MongoDB Connected Successfully');
+//       startUnlockService();
+//   })
+//   .catch((err) => console.error('❌ MongoDB Error:', err.message));
+
+// // API Test route
+// app.get('/api/test', (req, res) => {
+//   res.json({ message: 'Digital Memory Vault API is running!' });
+// });
+
+// // API Routes
+// app.use('/api/auth', authRoutes);
+// app.use('/api/capsules', capsuleRoutes);
+
+// // ✅ Vercel ke liye - LISTEN MAT KARO, SIRF EXPORT KARO
+// module.exports = app;
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -101,28 +293,17 @@ const path = require('path');
 
 dotenv.config();
 
+// Import routes
 const authRoutes = require('./src/routes/authRoutes');
 const capsuleRoutes = require('./src/routes/capsuleRoutes');
 const { startUnlockService } = require('./src/services/unlockService');
 
 const app = express();
 
-// ✅ CORS - Allow frontend URL (YAHAN FRONTEND URL DALO)
-const allowedOrigins = [
-    'http://localhost:5000',
-    'https://digital-memory-vault-frontend.vercel.appp',
-];
-
-app.use(cors({
-    origin: allowedOrigins,
-    credentials: true
-}));
-
+// Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// ⚠️ Remove this line (frontend serve karna band karo)
-// app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -144,17 +325,5 @@ app.get('/api/test', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/capsules', capsuleRoutes);
 
-// ⚠️ Remove this line (frontend routes hatao)
-// app.get(/^\/(?!api).*/, (req, res) => {
-//     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
-// });
-
-const PORT = process.env.PORT || 5000;
-
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}`);
-    });
-}
-
+// ✅ Vercel ke liye - SIRF YAHI SE END HAI
 module.exports = app;
