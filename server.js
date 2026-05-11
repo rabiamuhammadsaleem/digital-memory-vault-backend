@@ -324,7 +324,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
 // API Test route
-app.get('/api/test', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Digital Memory Vault API is running!' });
 });
 
@@ -332,5 +332,8 @@ app.get('/api/test', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/capsules', capsuleRoutes);
 
-// ✅ Vercel ke liye - SIRF YAHI SE END HAI
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+});
 module.exports = app;
